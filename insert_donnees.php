@@ -1,6 +1,5 @@
 <?php 
 
-session_start();
 
 
 try {
@@ -22,6 +21,11 @@ if (isset($_POST['send']) && $_POST['send'] == "envoyer"){
 }
 ?>
 <html>
+
+<head>
+    
+<link rel="stylesheet" href="bootstrap.min.css">
+</head>
     <body>
         <form method="post">
             <p>Formulaire :</p>
@@ -30,5 +34,11 @@ if (isset($_POST['send']) && $_POST['send'] == "envoyer"){
             Email:<input type="text" name="email" />
             <input type="submit" name="send" value="envoyer"/>
         </form>
+
+
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.css"></script>
+
     </body>
 </html>

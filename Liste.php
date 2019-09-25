@@ -1,7 +1,4 @@
-<?php 
-
-session_start();
-
+<?php
 
 try {
 	$link = new PDO('mysql:host=localhost;dbname=b3','root', '');
@@ -23,9 +20,15 @@ $stmt->execute();
 <body>
 <h1>liste des user</h1>
 
-<?php foreach ($stmt as $user) {
+<?php 
+
+
+foreach ($stmt as $user) {
  echo $user['nom']."<br>";
 }
+
+
+
 ?>
 
 <br/>

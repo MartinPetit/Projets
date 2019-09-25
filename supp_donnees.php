@@ -22,7 +22,7 @@ $stmt->execute();
 <div> Cliquer sur un utilisateur pour le supprimer </div>
 
 <?php foreach ($stmt as $user) {
- echo "<a href = 'Liste.php'>" .$user['nom']." </a><br>";
+ echo "<a href = 'Liste.php?test=1'>" .$user['nom']." </a><br>";
 }
 ?>
 
