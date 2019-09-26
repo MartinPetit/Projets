@@ -23,6 +23,7 @@ $stmt->execute();
 <?php 
 
 
+
 foreach ($stmt as $user) { ?>
 
 	<table>
@@ -33,7 +34,11 @@ foreach ($stmt as $user) { ?>
 <td> <?php echo $user['prenom']; ?> </td>
 <td> <?php echo $user['email']; ?> </td>
 
-<td> <?php echo ' <a href='.'supp_donnees.php?id=$user["id"]'.'>Supprimer user <a/>';?>
+<td> <?php echo $user['id']; ?> </td>
+
+
+
+<td> <?php echo " <a href=\"supp_donnees.php?id=".$user['id']."\">Supprimmer</a>\n";?>
 
 
 </tr>

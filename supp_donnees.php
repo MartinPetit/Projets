@@ -7,27 +7,12 @@ try {
     die();
 }
 
-$sql = "SELECT * FROM user";
+$id = $_GET["id"];
+echo $id;
 
-$stmt = $link->prepare($sql);
-$stmt->execute();
+$sql ="DELETE FROM user WHERE id = '".$id."'";
+
+                $sth = $link->prepare($sql);
+                $sth->execute();
 
 ?>
-<html>
-<head>
-	<link rel="stylesheet" href="Supp.css" />
-</head>
-<body>
-<h1>Utilisateurs</h1>
-<div> Cliquer sur un utilisateur pour le supprimer </div>
-
-<?php foreach ($stmt as $user) {
- echo "<a href = 'Liste.php?test=1'>" .$user['nom']." </a><br>";
-}
-?>
-
-
-
-</body>
-</html>
-
