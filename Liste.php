@@ -23,13 +23,22 @@ $stmt->execute();
 <?php 
 
 
-foreach ($stmt as $user) {
- echo $user['nom']."<br>";
-}
+foreach ($stmt as $user) { ?>
 
+	<table>
 
+	<tr>
 
-?>
+<td> <?php echo $user['nom']; ?> </td>
+<td> <?php echo $user['prenom']; ?> </td>
+<td> <?php echo $user['email']; ?> </td>
+
+</tr>
+
+<?php }?>
+
+</table>
+
 
 <br/>
 
