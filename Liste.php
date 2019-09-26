@@ -33,6 +33,9 @@ foreach ($stmt as $user) { ?>
 <td> <?php echo $user['prenom']; ?> </td>
 <td> <?php echo $user['email']; ?> </td>
 
+<td> <?php echo ' <a href='.'supp_donnees.php?id=$user["id"]'.'>Supprimer user <a/>';?>
+
+
 </tr>
 
 <?php }?>
@@ -43,8 +46,6 @@ foreach ($stmt as $user) { ?>
 <br/>
 
 <a href="insert_donnees.php"> Ajouter un utilisateur</a><br/>
-<a href="supp_donnees.php"> Supprimer un utilisateur</a><br/>
-<a href="insert_donnees.php"> Editer un utilisateur</a>
 
 
 </body>
