@@ -62,3 +62,11 @@ if (isset($_POST['send']) && $_POST['send'] == "envoyer"){
 
 
 ?>
+
+<html>
+<head>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+</body>
+</html>

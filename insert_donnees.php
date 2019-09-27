@@ -11,7 +11,7 @@ try {
 
 
 
-if (isset($_POST['send']) && $_POST['send'] == "envoyer"){
+if (isset($_POST['send'])){
 	if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email'])){
 
     $nom = $_POST['nom'];
@@ -46,21 +46,57 @@ if (isset($_POST['send']) && $_POST['send'] == "envoyer"){
 
 <head>
     
-<link rel="stylesheet" href="bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="insert_donnees.css">
+
 </head>
     <body>
-        <form method="post">
-            <p>Formulaire :</p>
-            Nom:<input type="text" name="nom" />
-            Prenom:<input type="text" name="prenom" />
-            Email:<input type="text" name="email" />
-            <input type="submit" name="send" value="envoyer"/>
-        </form>
 
 
-    <script src="js/jquery-3.3.1.slim.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.css"></script>
+        <div class = " i1 " >
+            
+                <div class="col-md-12 ">
+
+                    <h1> Connexion </h1>
+                    
+
+
+                    <form method="post" class="form-horizontal">
+                        <div class = "form-group">
+
+                         <label for = "mNom"> </label>
+                         <input type="text" id = "mNom" class = "form-control" placeholder = "Entrer votre nom" name="nom" />
+                     </div>
+                     <div class = "form-group">
+                         <label for = "mPrenom"> </label>
+                         <input type="text" id = "mPrenom" class = "form-control" placeholder = "Entrer votre prénom" name="prenom" />
+                     </div>
+                     <div class = "form-group">
+
+                         <label for = "mEmail"> </label>
+                         <input type="text" name="email" id="mEmail" class ="form-control" placeholder = "Entrer votre adresse mail"/>
+
+                     </div>
+                     <div class = "form-group id2">
+                               <button type="submit" name="send" class="btn btn-primary"> Envoyer </button>
+
+                           </div>
+
+                       </form>
+                    
+
+
+
+                <script src="js/jquery-3.3.1.slim.min.js"></script>
+                <script src="js/popper.min.js"></script>
+                <script src="js/bootstrap.min.css"></script>
+            </div>
+
+
+
+      
+
+        </div>
 
     </body>
 </html>

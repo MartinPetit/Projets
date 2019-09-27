@@ -15,7 +15,8 @@ $stmt->execute();
 ?>
 <html>
 <head>
-	<link rel="stylesheet" href="Liste.css" />
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/Liste.css" />
 </head>
 <body>
 <h1>liste des user</h1>
