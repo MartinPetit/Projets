@@ -38,7 +38,9 @@ foreach ($stmt as $user) { ?>
 
 
 
-<td> <?php echo " <a href=\"supp_donnees.php?id=".$user['id']."\">Supprimmer</a>\n";?>
+<td> <?php echo " <a href=\"supp_donnees.php?id=".$user['id']."\">Supprimmer</a>\n";
+echo " <a href=\"edit_donnees.php?id=".$user['id']."\">modifier informations</a>\n"; ?>
+</td>
 
 
 </tr>
