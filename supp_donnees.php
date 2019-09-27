@@ -8,7 +8,7 @@ try {
 }
 
 $id = $_GET["id"];
-echo $id;
+
 
 $sql ="DELETE FROM user WHERE id = '".$id."'";
 

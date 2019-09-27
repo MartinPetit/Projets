@@ -7,7 +7,6 @@ try {
 }
 
 $id = $_GET["id"];
-echo $id;
 
 $sql = "SELECT * FROM user WHERE id = '".$id."'";
 
@@ -25,6 +24,38 @@ echo '<form method="post">
             Email:<input type="text" name="email" value = "'.$user['email'].'"/>
             <input type="submit" name="send" value="envoyer"/>
         </form>';
+
+}
+
+
+if (isset($_POST['send']) && $_POST['send'] == "envoyer"){
+	if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email'])){
+
+    $nom = $_POST['nom'];
+    $prenom = $_POST['prenom'];
+    $email = $_POST['email'];
+
+    //on test si le mail a été utilisé
+
+    $testmail = $link->prepare('SELECT * FROM user WHERE email = ?');
+    $testmail->execute(array($email));
+    $mailexist=$testmail->rowcount();
+
+    if($mailexist==0) {
+	
+
+	$SQL = $link->prepare("UPDATE user SET nom = ?, prenom = ?, email = ? WHERE id = '".$id."'");
+	$SQL->execute(array($nom,$prenom,$email));
+	header('Location: Liste.php');
+
+} else { 
+    echo "ce mail est utilisé, veuillez rentrer un autre mail";
+
+}
+	
+
+    }
+
 
 }
 
