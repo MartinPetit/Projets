@@ -32,7 +32,8 @@ if (isset($_POST['send'])){
 	header('Location: Liste.php');
 
 } else { 
-    echo "ce mail est utilisé, veuillez rentrer un autre mail";
+    echo "ce mail est utilisé, veuillez rentrer un autre mail"; 
+
 
 }
 	

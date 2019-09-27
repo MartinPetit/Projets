@@ -6,29 +6,8 @@ try {
     die();
 }
 
-$id = $_GET["id"];
 
-$sql = "SELECT * FROM user WHERE id = '".$id."'";
-
-$stmt = $link->prepare($sql);
-$stmt->execute();
-
-
-foreach ($stmt as $user) {
-
-
-echo '<form method="post">
-            <p>Formulaire :</p>
-            Nom:<input type="text" name="nom" value = "'.$user['nom'].'"/>
-            Prenom:<input type="text" name="prenom" value = "'.$user['prenom'].'"/>
-            Email:<input type="text" name="email" value = "'.$user['email'].'"/>
-            <input type="submit" name="send" value="envoyer"/>
-        </form>';
-
-}
-
-
-if (isset($_POST['send']) && $_POST['send'] == "envoyer"){
+if (isset($_POST['send'])) {
 	if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email'])){
 
     $nom = $_POST['nom'];
@@ -61,11 +40,68 @@ if (isset($_POST['send']) && $_POST['send'] == "envoyer"){
 
 
 
+
+
+
+$id = $_GET["id"];
+
+$sql = "SELECT * FROM user WHERE id = '".$id."'";
+
+$stmt = $link->prepare($sql);
+$stmt->execute();
+
+
+foreach ($stmt as $user) {
+
+
+echo '<div class = " i1 " >
+            
+                <div class="col-md-12 ">
+
+                    <h1> Modifier vos données </h1>
+
+
+
+	<form method="post" class="form-horizontal">
+         
+         <div class = "form-group">
+			<label for = "mNom"> </label>
+            <input type="text" id = "mNom" class = "form-control" placeholder = "Entrer votre nom" name="nom" value = "'.$user['nom'].'"/>
+            </div>
+
+            <div class = "form-group">
+            <label for = "mPrenom"> </label>
+            <input type="text" id = "mPrenom" class = "form-control" placeholder = "Entrer votre prénom" name="prenom" value = "'.$user['prenom'].'"/>
+            </div>
+
+            <div class = "form-group">
+            <label for = "mEmail"> </label>
+            <input type="text" id="mEmail" class ="form-control" placeholder = "Entrer votre adresse mail" name="email" value = "'.$user['email'].'"/>
+            </div>
+
+            <div class = "form-group">
+            <button type="submit" name="send" class="btn btn-primary"> Envoyer </button>
+            </div>
+        </form>
+</div>
+</div>
+
+        ';
+
+}
+
+
+
+
+
+
 ?>
 
 <html>
 <head>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="edit_donnees.css">
+
 </head>
 <body>
 </body>
