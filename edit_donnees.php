@@ -7,36 +7,6 @@ try {
 }
 
 
-if (isset($_POST['send'])) {
-	if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email'])){
-
-    $nom = $_POST['nom'];
-    $prenom = $_POST['prenom'];
-    $email = $_POST['email'];
-
-    //on test si le mail a été utilisé
-
-    $testmail = $link->prepare('SELECT * FROM user WHERE email = ?');
-    $testmail->execute(array($email));
-    $mailexist=$testmail->rowcount();
-
-    if($mailexist==0) {
-	
-
-	$SQL = $link->prepare("UPDATE user SET nom = ?, prenom = ?, email = ? WHERE id = '".$id."'");
-	$SQL->execute(array($nom,$prenom,$email));
-	header('Location: Liste.php');
-
-} else { 
-    echo "ce mail est utilisé, veuillez rentrer un autre mail";
-
-}
-	
-
-    }
-
-
-}
 
 
 
@@ -79,7 +49,7 @@ echo '<div class = " i1 " >
             <input type="text" id="mEmail" class ="form-control" placeholder = "Entrer votre adresse mail" name="email" value = "'.$user['email'].'"/>
             </div>
 
-            <div class = "form-group">
+            <div class = "form-group id2">
             <button type="submit" name="send" class="btn btn-primary"> Envoyer </button>
             </div>
         </form>
@@ -92,7 +62,36 @@ echo '<div class = " i1 " >
 
 
 
+if (isset($_POST['send'])) {
+	if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email'])){
 
+    $nom = $_POST['nom'];
+    $prenom = $_POST['prenom'];
+    $email = $_POST['email'];
+
+    //on test si le mail a été utilisé
+
+    $testmail = $link->prepare('SELECT * FROM user WHERE email = ?');
+    $testmail->execute(array($email));
+    $mailexist=$testmail->rowcount();
+
+    if($mailexist==0) {
+	
+
+	$SQL = $link->prepare("UPDATE user SET nom = ?, prenom = ?, email = ? WHERE id = '".$id."'");
+	$SQL->execute(array($nom,$prenom,$email));
+	header('Location: Liste.php');
+
+} else { 
+    echo "ce mail est utilisé, veuillez rentrer un autre mail";
+
+}
+	
+
+    }
+
+
+}
 
 
 ?>

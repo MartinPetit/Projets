@@ -1,3 +1,22 @@
-table {
-	border : 1px solid black;
+.table-bordered {
+	border-width: 2px;
+	border-color: black;	
 }
+
+#titre {
+	text-align: center;
+	text-decoration: underline;
+	
+	margin-bottom: 50px;
+}
+
+.btn-default {
+	background-color : white;
+	border-color: black;
+} 
+
+.btn-default:hover {
+	background-color: black;
+	color : white;
+}
+
