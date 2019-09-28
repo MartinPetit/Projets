@@ -7,10 +7,7 @@ try {
 }
 
 
-
-
-
-
+// on recupere l'id correspondant que l'on stocke dans une variable $id puis on selectionne toute la ligne dans la base de donnée qui contient ce $id
 
 
 $id = $_GET["id"];
@@ -20,6 +17,8 @@ $sql = "SELECT * FROM user WHERE id = '".$id."'";
 $stmt = $link->prepare($sql);
 $stmt->execute();
 
+
+// Formulaire identique au formulaire d'insertion sauf que l'on affecte l'attribut value a chaque ligne qui prend comme valeur les noms, prenoms et mails que l'utilisateur veut modifié
 
 foreach ($stmt as $user) {
 
@@ -60,7 +59,7 @@ echo '<div class = " i1 " >
 
 }
 
-
+// requetes identiques à l'insertion à l'exception de la dernière requête update qui permet de modifier le nom, prenom, et mail d'une ligne dans la bdd
 
 if (isset($_POST['send'])) {
 	if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email'])){
@@ -69,9 +68,9 @@ if (isset($_POST['send'])) {
     $prenom = $_POST['prenom'];
     $email = $_POST['email'];
 
-    //on test si le mail a été utilisé
+    //on test si le mail a été utilisé 
 
-    $testmail = $link->prepare('SELECT * FROM user WHERE email = ?');
+    $testmail = $link->prepare("SELECT * FROM user WHERE email = ? AND id != '".$id."'"); // on selectionne toutes les lignes sauf celle contenant l'id
     $testmail->execute(array($email));
     $mailexist=$testmail->rowcount();
 

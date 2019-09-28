@@ -9,10 +9,12 @@ try {
     die();
 }
 
-
+// on vérifie que les champs sont bien remplis par l'utilisateur
 
 if (isset($_POST['send'])){
 	if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email'])){
+
+// on récupere les informations rentrées par l'utilisateur
 
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
@@ -25,11 +27,13 @@ if (isset($_POST['send'])){
     $mailexist=$testmail->rowcount();
 
     if($mailexist==0) {
+
+// on effectue l'insertion dans la base de données
 	
 
 	$SQL = $link->prepare('INSERT INTO user(nom,prenom,email) VALUES(?,?,?)');
 	$SQL->execute(array($nom,$prenom,$email));
-	header('Location: Liste.php');
+	header('Location: Liste.php'); // on redirige l'utilisateur vers la page Liste.php
 
 } else { 
     echo "ce mail est utilisé, veuillez rentrer un autre mail"; 
@@ -43,6 +47,10 @@ if (isset($_POST['send'])){
 
 }
 ?>
+
+<!-- Parti html qui contient le formulaire d'insertions de données -->
+
+
 <html>
 
 <head>

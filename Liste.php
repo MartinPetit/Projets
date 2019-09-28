@@ -7,19 +7,26 @@ try {
     die();
 }
 
+// On récupere toutes les données de la tables user
+
+
 $sql = "SELECT * FROM user";
 
 $stmt = $link->prepare($sql);
 $stmt->execute();
 
 ?>
+
+<!-- Mise en forme du tableau des utilisateurs à l'aide de bootstrap -->
+
+
 <html>
 <head>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="Liste.css" />
 </head>
 <body>
-	
+
 	<div id="titre">
 <h1>Liste des utilisateurs</h1>
 </div>
@@ -37,7 +44,7 @@ $stmt->execute();
 
 <?php 
 
-
+// boucles qui affiches toutes les données de la table user rentrés par l'utilisateur
 
 foreach ($stmt as $user) { ?>
 
@@ -49,8 +56,8 @@ foreach ($stmt as $user) { ?>
 
 
 
-<td> <?php echo " <a href=\"supp_donnees.php?id=".$user['id']."\" class='btn btn-default'>Supprimmer</a>\n"; ?></td>
-<td> <?php echo " <a href=\"edit_donnees.php?id=".$user['id']."\" class='btn btn-default'>modifier informations</a>\n"; ?>
+<td> <?php echo " <a href=\"supp_donnees.php?id=".$user['id']."\" class='btn btn-default'>Supprimmer</a>\n"; ?></td> <!-- On affecte l'id de la base de donnée correspondant aux informations rentrées par l'utilisateur au lien <a>  puis on redirige l'utilisateur vers la page suppression-->
+<td> <?php echo " <a href=\"edit_donnees.php?id=".$user['id']."\" class='btn btn-default'>modifier informations</a>\n"; ?> <!-- idem ici  puis redirection vers modification--> 
 </td>
 
 
