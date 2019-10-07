@@ -64,11 +64,19 @@ echo '<div class = " i1 " >
 if (isset($_POST['send'])) {
 	if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email'])){
 
+
+
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
     $email = $_POST['email'];
 
+
+    if (preg_match("/[a-z]/i", $nom ) && preg_match("/[a-z]/i", $prenom )) {
+
+
     //on test si le mail a été utilisé 
+
+    if (preg_match("/^[a-z0-9\-_.]+@[a-z]+\.[a-z]{2,3}$/i", $email)) {
 
     $testmail = $link->prepare("SELECT * FROM user WHERE email = ? AND id != '".$id."'"); // on selectionne toutes les lignes sauf celle contenant l'id
     $testmail->execute(array($email));
@@ -85,8 +93,18 @@ if (isset($_POST['send'])) {
     echo "ce mail est utilisé, veuillez rentrer un autre mail";
 
 }
+
+} else {
+    echo "le mail n'a pas le bon format";
+}
+
+} else {
+    echo "le nom et le prenom n'ont pas le bon format";
+}
 	
 
+    } else {
+        echo "Veuillez remplir toutes les informations";
     }
 
 

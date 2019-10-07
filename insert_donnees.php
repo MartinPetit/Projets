@@ -13,6 +13,7 @@ try {
 
 if (isset($_POST['send'])){
 	if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email'])){
+        
 
 // on récupere les informations rentrées par l'utilisateur
 
@@ -20,7 +21,15 @@ if (isset($_POST['send'])){
     $prenom = $_POST['prenom'];
     $email = $_POST['email'];
 
-    //on test si le mail a été utilisé
+    // on teste si le nom et le prenom a le bon format
+
+    if (preg_match("/[a-z]/i", $nom ) && preg_match("/[a-z]/i", $prenom )) {
+
+
+
+    //on test si le mail a été utilisé et a le bon format
+
+    if (preg_match("/^[a-z0-9\-_.]+@[a-z]+\.[a-z]{2,3}$/i", $email)) {
 
     $testmail = $link->prepare('SELECT * FROM user WHERE email = ?');
     $testmail->execute(array($email));
@@ -40,8 +49,17 @@ if (isset($_POST['send'])){
 
 
 }
-	
 
+} else {
+    echo "le mail n'a pas le bon format";
+}
+
+} else {
+    echo "le nom et le prenom n'ont pas le bon format";
+}
+	
+    } else {
+        echo "veuillez remplir toutes les informations";
     }
 
 
